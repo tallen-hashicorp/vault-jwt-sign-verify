@@ -87,7 +87,7 @@ node sign.js --token h*******2
 
 If you use another vault URL use:
 ```bash
-node sign.js --token h*****2 --vault <https://127.0.0.1:8200>
+node sign.js --token h*****2 --vault https://127.0.0.1:8200
 ```
 
 # To Sign an exsiting JWT using a vault key
