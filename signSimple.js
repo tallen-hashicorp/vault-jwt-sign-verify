@@ -20,13 +20,11 @@ async function sign(){
     return (rsp.data.data.signature)
 }
 
-
 async function generateJwt(){
     const signature = await sign()
     const signature64 = base64encode(signature.replace(/vault:v.*:/g,''))
     return `${flags.jwt}.${signature64}`
 }
-
 
 async function run(){
     const jwt = await generateJwt()

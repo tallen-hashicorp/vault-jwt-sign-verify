@@ -35,18 +35,14 @@ async function sign(){
     return (rsp.data.data.signature)
 }
 
-
 async function generateJwt(){
     const signature = await sign()
     const signature64 = base64encode(signature.replace(/vault:v.*:/g,''))
     return `${header64}.${payload64}.${signature64}`
-    
 }
-
 
 async function run(){
     const jwt = await generateJwt()
     console.log(jwt)
 }
-
 run();
