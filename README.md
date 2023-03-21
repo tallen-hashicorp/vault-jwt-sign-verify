@@ -92,7 +92,7 @@ node sign.js --token h*****2 --vault <https://127.0.0.1:8200>
 
 # To Sign an exsiting JWT using a vault key
 ```bash
-node signSimple.js --token hvs.6Ld8NHkkQeXC9pmMrTqncHh2 --jwt eyJraWQiOiJrZXlOYW1lX2tleVZlcnNpb24iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkiLCJuYW1lIjoiVHlsZXIgQWxsZW4iLCJpYXQiOjE2Nzk0MDU4NTg2MDF9
+node signSimple.js --token h*****2 --jwt eyJraWQiOiJrZXlOYW1lX2tleVZlcnNpb24iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkiLCJuYW1lIjoiVHlsZXIgQWxsZW4iLCJpYXQiOjE2Nzk0MDU4NTg2MDF9
 ```
 
 # To Verify a JWT using a vault key
