@@ -78,6 +78,8 @@ npm install
 
 # To Generate a JWT using a vault key
 Defaults to `http://127.0.0.1:8200`
+
+Replace the `token` with your vault token
 ```bash
 node sign.js --token h*******2
 ```
@@ -88,11 +90,13 @@ node sign.js --token h*****2 --vault https://127.0.0.1:8200
 ```
 
 # To Sign an exsiting JWT using a vault key
+Replace the `token` and `jwt` with your vault token and a non signed JWT
 ```bash
-node signSimple.js --token h*****2 --jwt eyJraWQiOiJrZXlOYW1lX2tleVZlcnNpb24iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkiLCJuYW1lIjoiVHlsZXIgQWxsZW4iLCJpYXQiOjE2Nzk0MDU4NTg2MDF9
+node signSimple.js --token h*****2 --jwt e.sd
 ```
 
 # To Verify a JWT using a vault key
+Replace the `token` and `jwt` with your vault token and your signed JWT
 ```bash
 node verify.js --token h*****2 --jwt asd.asd.asd
 ```
