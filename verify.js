@@ -1,4 +1,5 @@
 const { base64encode, base64decode } = require('nodejs-base64');
+const base64url = require('base64url');
 const args = require('args')
 const axios = require('axios');
 
@@ -25,8 +26,8 @@ async function verify(input, signature){
 async function verifyJwt(jwt){
     const jwtHeader = jwt.split(".")[0]
     const jwtPayload = jwt.split(".")[1]
-    const jwtSignature = jwt.split(".")[2]
-    const valid =verify(base64encode(`${jwtHeader}.${jwtPayload}`),`vault:v${flags.keyVersion}:${base64decode(jwtSignature)}`)
+    const jwtSignature = base64url.toBase64(jwt.split(".")[2])
+    const valid =verify(base64encode(`${jwtHeader}.${jwtPayload}`),`vault:v${flags.keyVersion}:${jwtSignature}`)
     return valid
 }
 

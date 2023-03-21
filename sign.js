@@ -1,4 +1,5 @@
-const { base64encode, base64decode } = require('nodejs-base64');
+const { base64encode } = require('nodejs-base64');
+const base64url = require('base64url');
 const args = require('args')
 const axios = require('axios');
 
@@ -18,11 +19,12 @@ const header = {
 const payload = {
     "sub": flags.sub,
     "name": flags.name,
-    "iat": Date.now()
+    "iat": Date.now()/1000,
+    "exp": (Date.now()/1000)+3600
 }
 
-const header64 = base64encode(JSON.stringify(header))
-const payload64 = base64encode(JSON.stringify(payload))
+const header64 = Buffer.from(JSON.stringify(header)).toString('base64url')
+const payload64 = Buffer.from(JSON.stringify(payload)).toString('base64url')
 
 async function sign(){
     const rsp = await axios.post(`${flags.vault}/v1/transit/sign/${flags.key}`, {
@@ -37,7 +39,7 @@ async function sign(){
 
 async function generateJwt(){
     const signature = await sign()
-    const signature64 = base64encode(signature.replace(/vault:v.*:/g,''))
+    const signature64 = base64url.fromBase64(signature.replace(/vault:v.*:/g,''))
     return `${header64}.${payload64}.${signature64}`
 }
 

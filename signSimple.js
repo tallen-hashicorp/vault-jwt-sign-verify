@@ -1,4 +1,5 @@
-const { base64encode, base64decode } = require('nodejs-base64');
+const { base64encode} = require('nodejs-base64');
+const base64url = require('base64url');
 const args = require('args')
 const axios = require('axios');
 
@@ -22,7 +23,7 @@ async function sign(){
 
 async function generateJwt(){
     const signature = await sign()
-    const signature64 = base64encode(signature.replace(/vault:v.*:/g,''))
+    const signature64 = base64url.fromBase64(signature.replace(/vault:v.*:/g,''))
     return `${flags.jwt}.${signature64}`
 }
 
