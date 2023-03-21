@@ -69,9 +69,6 @@ vault secrets enable transit
 Next we will create a new RSA-4096 key called `sign_key`
 ```bash
 vault write -f transit/keys/sign_key type="rsa-4096"
-
-vault write -f transit/keys/sign_key/config deletion_allowed="true" exportable="true"
-vault read /transit/export/signing-key/sign_key
 ```
 
 # Install
